@@ -362,12 +362,12 @@ impl<'a> AudioClassBuilder<'a> {
         if let Some(stream_config) = self.input {
             let interface = alloc.interface();
             let endpoint =
-                alloc.alloc(
-                    None, 
-                    EndpointType::Isochronous { synchronization: IsochronousSynchronizationType::NoSynchronization, usage: IsochronousUsageType::Data }, 
+                alloc.isochronous(
+                    IsochronousSynchronizationType::Adaptive, 
+                    IsochronousUsageType::Data,
                     stream_config.ep_size, 
                     1
-                )?;
+                );
             let alt_setting = DEFAULT_ALTERNATE_SETTING;
             ac.input = Some(AudioStream {
                 stream_config,
@@ -380,12 +380,12 @@ impl<'a> AudioClassBuilder<'a> {
         if let Some(stream_config) = self.output {
             let interface = alloc.interface();
             let endpoint =
-                alloc.alloc(
-                    None, 
-                    EndpointType::Isochronous { synchronization: IsochronousSynchronizationType::NoSynchronization, usage: IsochronousUsageType::Data }, 
-                    stream_config.ep_size, 
-                    1
-                )?;
+            alloc.isochronous(
+                IsochronousSynchronizationType::Adaptive, 
+                IsochronousUsageType::Data,
+                stream_config.ep_size, 
+                1
+            );
             let alt_setting = DEFAULT_ALTERNATE_SETTING;
             ac.output = Some(AudioStream {
                 stream_config,
