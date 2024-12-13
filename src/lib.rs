@@ -364,7 +364,7 @@ impl<'a> AudioClassBuilder<'a> {
             let endpoint =
                 alloc.alloc(
                     None, 
-                    EndpointType::Isochronous { synchronization: IsochronousSynchronizationType::Asynchronous, usage: IsochronousUsageType::Data }, 
+                    EndpointType::Isochronous { synchronization: IsochronousSynchronizationType::NoSynchronization, usage: IsochronousUsageType::Data }, 
                     stream_config.ep_size, 
                     1
                 )?;
@@ -382,7 +382,7 @@ impl<'a> AudioClassBuilder<'a> {
             let endpoint =
                 alloc.alloc(
                     None, 
-                    EndpointType::Isochronous { synchronization: IsochronousSynchronizationType::Asynchronous, usage: IsochronousUsageType::Data }, 
+                    EndpointType::Isochronous { synchronization: IsochronousSynchronizationType::NoSynchronization, usage: IsochronousUsageType::Data }, 
                     stream_config.ep_size, 
                     1
                 )?;
